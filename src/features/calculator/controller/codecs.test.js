@@ -26,5 +26,77 @@ describe('Features - Calculator - Controller - Codec - Unit Test',  () => {
                 expect(act.right).toBeTruthy();
             });
         });
+        describe('minus and -', () => {
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "minus"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "-"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+        });
+        describe('multiple and *', () => {
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "multiple"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "*"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+        });
+        describe('divide and /', () => {
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "divide"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+            test('valid calculator request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "/"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeTruthy();
+            });
+        });
     });
 });
