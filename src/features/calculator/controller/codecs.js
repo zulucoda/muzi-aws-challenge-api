@@ -1,16 +1,8 @@
+const { OPERATION } = require('../config');
 const t = require('io-ts');
 const { NumberFromString } = require('io-ts-types');
 
-const OperationsBrand =  t.keyof({
-    add: null,
-    minus: null,
-    multiple: null,
-    divide: null,
-    '+': null,
-    '-': null,
-    '*': null,
-    '/': null
-})
+const OperationsBrand =  t.keyof(OPERATION);
 
 const CalculatorRequestCodec = t.strict({
     a: NumberFromString,
