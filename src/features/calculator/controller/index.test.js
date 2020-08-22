@@ -2,13 +2,21 @@ const { calculate } = require('.');
 
 describe('Features - Calculator - Unit Test', () => {
 
-    const mockResponse = {
-        send: jest.fn(),
-        status: jest.fn(),
-        json: jest.fn()
-    }
+    let sendMock;
+    let mockResponse;
 
-   describe('add', () => {
+   describe('calculate', () => {
+
+       beforeEach(() => {
+           sendMock = jest.fn();
+           mockResponse = {
+               send: sendMock,
+               status: jest.fn(() => ({
+                   send: sendMock
+               })),
+               json: jest.fn()
+           }
+       });
 
      test('should + a and b and return the answer in c', () => {
          const request = {
@@ -82,5 +90,19 @@ describe('Features - Calculator - Unit Test', () => {
 
         expect(mockResponse.json).toHaveBeenCalledWith(expected);
      });
+     test('should return bad request for divide by 0', () => {
+         const request = {
+             body: {
+                 a: 0,
+                 b: 0,
+                 op: '/'
+             }
+         }
+
+         calculate(request, mockResponse);
+
+         expect(mockResponse.status).toHaveBeenCalledWith(400);
+         expect(sendMock).toHaveBeenCalledWith('error dividing numbers');
+       });
    });
 });
