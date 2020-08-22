@@ -4,17 +4,27 @@
   "description": "muzi aws 5 challenges",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "node dev-local.js",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "prettier": "node_modules/.bin/prettier --write src/**/*.js"
   },
   "author": "Muzikayise Flynn Buthelezi (zuluCoda)",
   "license": "ISC",
   "dependencies": {
     "aws-serverless-express": "^3.3.8",
     "express": "^4.17.1",
-    "express-useragent": "^1.0.15"
+    "express-useragent": "^1.0.15",
+    "fp-ts": "^2.8.1",
+    "io-ts": "^2.2.10",
+    "io-ts-types": "^0.5.10",
+    "monocle-ts": "^2.3.3",
+    "newtype-ts": "^0.3.4"
   },
   "devDependencies": {
+    "jest": "^26.4.1",
+    "prettier": "^2.0.5",
     "serverless": "^1.79.0"
   }
 }
