@@ -4,6 +4,8 @@
   "description": "muzi aws 5 challenges",
   "main": "index.js",
   "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "node dev-local.js",
     "deploy": "serverless deploy"
   },
@@ -15,6 +17,7 @@
     "express-useragent": "^1.0.15"
   },
   "devDependencies": {
+    "jest": "^26.4.1",
     "serverless": "^1.79.0"
   }
 }
