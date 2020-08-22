@@ -1,4 +1,4 @@
-const {CalculatorRequestCodec} = require("./codecs");
+const {CalculatorRequestCodec, validate} = require("./codecs");
 
 describe('Features - Calculator - Controller - Codec - Unit Test',  () => {
     describe('CalculatorRequestCodec',  () => {
@@ -123,5 +123,34 @@ describe('Features - Calculator - Controller - Codec - Unit Test',  () => {
                 expect(act.right).toBeFalsy();
             });
         });
+    });
+    describe('validate', () => {
+        const mockResponse = {
+            status: jest.fn()
+        };
+        const mockNext = jest.fn();
+       test('when valid it should call next', () => {
+           const request = {
+               body: {
+                   a: "12",
+                   b: "12",
+                   op: "+"
+               }
+           }
+           validate(request, mockResponse, mockNext);
+           expect(mockNext).toBeCalled();
+       });
+
+       test('when invalid it should return 400 bad request', () => {
+           const request = {
+               body: {
+                   a: "two",
+                   b: "one",
+                   op: "+"
+               }
+           }
+           validate(request, mockResponse, mockNext);
+           expect(mockResponse.status).toBeCalledWith(400);
+       });
     });
 });
