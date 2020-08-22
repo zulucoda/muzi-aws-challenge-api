@@ -99,6 +99,16 @@ describe('Features - Calculator - Controller - Codec - Unit Test',  () => {
             });
         });
 
+        describe('valid number request', () => {
+           test('should allow numbers', () => {
+               const request = {
+                   body: {   "a": 2,   "b": 2,   "op": "add" }
+               }
+               const act = CalculatorRequestCodec.decode(request.body);
+               expect(act.right).toBeTruthy();
+           });
+        });
+
         describe('unknown or codec error', () => {
             test('invalid request', () => {
                 const request = {
