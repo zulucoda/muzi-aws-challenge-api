@@ -15,4 +15,8 @@ app.get('/helloworld', (req, res) => {
     res.status(200).send('Hello World');
 });
 
+app.get('/getAgent', (req, res) => {
+    res.send(req.useragent.source);
+});
+
 module.exports = app;
