@@ -98,5 +98,30 @@ describe('Features - Calculator - Controller - Codec - Unit Test',  () => {
                 expect(act.right).toBeTruthy();
             });
         });
+
+        describe('unknown or codec error', () => {
+            test('invalid request', () => {
+                const request = {
+                    body: {
+                        a: "12",
+                        b: "12",
+                        op: "unknown op"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeFalsy();
+            });
+            test('invalid request', () => {
+                const request = {
+                    body: {
+                        a: "two",
+                        b: "two",
+                        op: "+"
+                    }
+                }
+                const act = CalculatorRequestCodec.decode(request.body);
+                expect(act.right).toBeFalsy();
+            });
+        });
     });
 });
