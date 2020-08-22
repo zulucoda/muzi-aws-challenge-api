@@ -1,0 +1,19 @@
+{
+  "name": "muzi-aws-challenge-api",
+  "version": "1.0.0",
+  "description": "muzi aws 5 challenges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Muzikayise Flynn Buthelezi (zuluCoda)",
+  "license": "ISC",
+  "dependencies": {
+    "aws-serverless-express": "^3.3.8",
+    "express": "^4.17.1",
+    "express-useragent": "^1.0.15"
+  },
+  "devDependencies": {
+    "serverless": "^1.79.0"
+  }
+}

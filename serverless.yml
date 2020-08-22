@@ -1,0 +1,18 @@
+# Muzikayise Flynn Buthelezi (zuluCoda)
+
+service: muzi-aws-challenge-api
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 512
+  timeout: 15
+  stage: dev
+  region: us-east-1
+
+
+functions:
+  server:
+    handler: index.server
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
