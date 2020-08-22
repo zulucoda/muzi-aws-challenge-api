@@ -7,7 +7,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "dev": "node dev-local.js",
-    "deploy": "serverless deploy"
+    "deploy": "serverless deploy",
+    "prettier": "node_modules/.bin/prettier --write src/**/*.js"
   },
   "author": "Muzikayise Flynn Buthelezi (zuluCoda)",
   "license": "ISC",
