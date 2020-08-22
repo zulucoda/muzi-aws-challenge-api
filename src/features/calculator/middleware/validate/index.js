@@ -5,7 +5,7 @@ const validate = (req, res, next) => {
     if (results.right){
         return next();
     }
-    return res.status(400);
+    return res.sendStatus(400);
 };
 
 module.exports = validate;

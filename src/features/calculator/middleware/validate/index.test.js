@@ -3,7 +3,7 @@ const validate = require('.');
 describe('Features - Calculator - Middleware - Validate - Unit Test',  () => {
 describe('validate', () => {
     const mockResponse = {
-        status: jest.fn()
+        sendStatus: jest.fn()
     };
     const mockNext = jest.fn();
     test('when valid it should call next', () => {
@@ -27,7 +27,7 @@ describe('validate', () => {
             }
         }
         validate(request, mockResponse, mockNext);
-        expect(mockResponse.status).toBeCalledWith(400);
+        expect(mockResponse.sendStatus).toBeCalledWith(400);
     });
 });
 });
