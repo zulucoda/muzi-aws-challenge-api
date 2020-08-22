@@ -19,4 +19,6 @@ app.get('/getAgent', (req, res) => {
     res.send(req.useragent.source);
 });
 
+require('./features/calculator/route')(app);
+
 module.exports = app;
