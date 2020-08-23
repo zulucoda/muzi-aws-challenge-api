@@ -1,17 +1,18 @@
-const getMainImage = data => {
+const getMainImage = (data) => {
   let biggestBoundingBox = {
     boundingBox: 0,
-    name: ''
+    name: '',
   };
-  const {Labels: labels } = data;
-  const labelsWithInstances = labels.filter(({ Instances: instances }) => instances.length > 0)
+  const { Labels: labels } = data;
+  const labelsWithInstances = labels
+    .filter(({ Instances: instances }) => instances.length > 0)
     .map(({ Instances: instances, Name: name }) => ({ instances, name }));
 
   for (let i = 0; i < labelsWithInstances.length; i++) {
     const { instances, name } = labelsWithInstances[i];
     for (let j = 0; j < instances.length; j++) {
       const { BoundingBox: boundingBox } = instances[j];
-      const {Width: width, Height: height} = boundingBox;
+      const { Width: width, Height: height } = boundingBox;
       const boundingBoxWidthAndHeight = Number(width) + Number(height);
       if (boundingBoxWidthAndHeight > biggestBoundingBox.boundingBox) {
         biggestBoundingBox = {

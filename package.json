@@ -8,7 +8,10 @@
     "test:watch": "jest --watch",
     "dev": "node dev-local.js",
     "deploy": "serverless deploy",
-    "prettier": "node_modules/.bin/prettier --write src/**/*.js"
+    "prettier": "node_modules/.bin/prettier --write src/**/*.js",
+    "up-version": "npm version major --force --message \"[ci skip] up version for release\"",
+    "up-version:minor": "npm version minor --force --message \"[ci skip] up version for release\"",
+    "up-version:patch": "npm version patch --force --message \"[ci skip] up version for release\""
   },
   "author": "Muzikayise Flynn Buthelezi (zuluCoda)",
   "license": "ISC",
