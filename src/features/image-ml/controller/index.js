@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const getMainImage = require('../utils/get-main-image');
 
 const imageMl = (req, res) => {
 
@@ -25,12 +26,12 @@ const imageMl = (req, res) => {
 
     rekognition.detectLabels(params, (err, data) => {
         if (err) {
-            console.log(err, err.stack); // an error occurred
+            console.log(err, err.stack);
             res.status(500).send(err);
         }
         else {
-            console.log(data); // successful response
-            res.status(200).send(JSON.stringify(data));
+            const result = getMainImage(data);
+            res.status(200).send(result);
         }
 
     });
