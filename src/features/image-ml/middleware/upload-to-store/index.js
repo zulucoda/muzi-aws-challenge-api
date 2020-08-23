@@ -3,6 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 const { BUCKET } = require('../../config');
 
 const uploadToS3 = (req, res, next) => {
+
     const config = new AWS.Config({
         accessKeyId: process.env.AWS_ACCESS_KEY_ID,
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -10,11 +11,12 @@ const uploadToS3 = (req, res, next) => {
     });
 
     const s3 = new AWS.S3();
+    const filename = `${uuidv4()}.jpg`;
 
     const image = {
-      Bucket: BUCKET,
-      Key: uuidv4(),
-      Body: req.body
+        Bucket: BUCKET,
+        Key: filename,
+        Body: req.body
     };
 
     s3.upload(image, (err, data) => {
@@ -27,6 +29,7 @@ const uploadToS3 = (req, res, next) => {
         };
         next();
     });
+
 };
 
 const uploadToStore = [
